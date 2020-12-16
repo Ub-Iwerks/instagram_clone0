@@ -13,4 +13,8 @@ class User < ApplicationRecord
                                                   BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
   end
+  
+  def feed
+    posts.where("user_id=?", id)
+  end
 end
