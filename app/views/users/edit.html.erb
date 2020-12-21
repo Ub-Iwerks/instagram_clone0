@@ -2,15 +2,33 @@
 <h1>Update your profile</h1>
 
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-6 col-md-offset-3 user_edit">
     <%= form_with(model: @user, local: true) do |f| %>
       <%= render "shared/error_messages", object: f.object %>
       
+      <h2>Public information</h2>
       <%= f.label :name %>
       <%= f.text_field :name, class:"form-control" %>
       
+      <%= f.label :username %>
+      <%= f.text_field :username, class:"form-control" %>
+      
+      <%= f.label :website %>
+      <%= f.url_field :website, class:"form-control" %>
+      
+      <%= f.label :introduction %>
+      <%= f.text_area :introduction, class:"form-control" %>
+      
+      <h2>Private information</h2>
+      <p>Provide your personal information. This won't be a part of your public profile.</p>
       <%= f.label :email %>
       <%= f.email_field :email, class:"form-control" %>
+      
+      <%= f.label :tel %>
+      <%= f.telephone_field :tel, class:"form-control" %>
+      
+      <%= f.label :gender %>
+      <%= f.select :gender, User.genders.keys.map {|k| [k, k]}, {prompt: "select"}, class:"form-control" %>
       
       <%= f.label :password %>
       <%= f.password_field :password, class:"form-control" %>
@@ -23,6 +41,10 @@
     <div class="gravatar_edit">
       <%= gravatar_for @user %>
       <a href="https://gravatar.com/emails" target="_blank">change</a>
+    </div>
+    <div class="negative_edit">
+      <%= link_to "Delete my account.", @user, method: :delete, date: {confirm: "You sure?"} %>
+      <%= link_to "Change my password", "#" %>
     </div>
   </div>
 </div>

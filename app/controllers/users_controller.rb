@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:edit, :update, :index, :following, :followers]
-  before_action :correct_user,   only: [:edit, :update]
+  before_action :logged_in_user, only: [:edit, :update, :index, :following, :followers, :destroy]
+  before_action :correct_user,   only: [:edit, :update, :destroy]
   
   def index
     @users = User.paginate(page: params[:page])
@@ -24,6 +24,12 @@ class UsersController < ApplicationController
     else
       render "new"
     end
+  end
+  
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:danger] = "Goodbye!"
+    redirect_to root_url
   end
   
   def edit
