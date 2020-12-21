@@ -167,6 +167,28 @@ aside {
   padding: 0;
 }
 
+.edit_btn {
+  color: gray;
+  display: inline;
+  vertical-align: middle;
+  display: inline-block;
+  border: 0.5px solid gray;
+  margin-left: 1em;
+}
+
+.user_date {
+  span {
+    &:first-child {
+      font-size: 1.1em;
+    }
+    &:last-child {
+      font-size: 0.9em;
+      font-weight: bold;
+      padding-top: 1em;
+    }
+  }
+}
+
 /* ===================== */
 /* forms */
 input, textarea, select, .uneditable-input {

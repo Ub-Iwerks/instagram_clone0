@@ -5,10 +5,17 @@
       <h1>
         <%= gravatar_for @user %>
         <%= @user.username %>
+        <% if current_user?(@user) %>
+          <%= link_to "Edit Profile", edit_user_path(@user), class:"btn btn-sm edit_btn" %>
+        <% end %>
       </h1>
     </section>
     <section class="stats">
       <%= render "shared/stats" %>
+    </section>
+    <section class="user_date">
+      <span><%= @user.introduction %></span>
+      <span><%= text_url_to_link(h(@user.website)).html_safe %></span>
     </section>
   </aside>
   <aside class="col-md-8">
