@@ -1,9 +1,10 @@
-User.create!(name: "Example user", email: "example@railstutorial.org", password: "foobar", password_confirmation: "foobar")
+User.create!(name: "Example user", username: "Example", email: "example@railstutorial.org", password: "foobar", password_confirmation: "foobar")
 99.times do |n|
   name = Faker::Name.name
+  username = Faker::Internet.user_name
   email = "example-#{n+1}@railstutorial.org"
   password = "password"
-  User.create!(name: name, email: email, password: password, password_confirmation: password)
+  User.create!(name: name, email: email, username: username, password: password, password_confirmation: password)
 end
 
 #ユーザーの一部を対象にポストを生成する。

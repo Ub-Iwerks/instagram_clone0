@@ -10,6 +10,15 @@ class User < ApplicationRecord
   validates :email, presence: true, length: {maximum: 255}, format: {with: VALID_EMAIL_REGEX}, uniqueness: true
   has_secure_password
   validates :password, presence: true, length: {minimum: 6}, allow_nil: true
+  validates :username, presence: true, length: {maximum: 50}
+  validates :introduction, length: {maximum: 150}
+  VALID_TEL_REGEX = /\A\d{10}$|^\d{11}|^$\z/
+  validates :tel, format: {with: VALID_TEL_REGEX}
+  enum gender: {
+    female: 0,
+    male: 1,
+    unanswered: 2
+  }
   
   #渡された文字列のハッシュ値を返す
   def User.digest(string)
