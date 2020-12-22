@@ -7,11 +7,11 @@
       <%= render "shared/error_messages", object: f.object %>
       
       <h2>Public information</h2>
-      <%= f.label :name %>
-      <%= f.text_field :name, class:"form-control" %>
-      
       <%= f.label :username %>
       <%= f.text_field :username, class:"form-control" %>
+      
+      <%= f.label :name %>
+      <%= f.text_field :name, class:"form-control" %>
       
       <%= f.label :website %>
       <%= f.url_field :website, class:"form-control" %>
@@ -30,12 +30,6 @@
       <%= f.label :gender %>
       <%= f.select :gender, User.genders.keys.map {|k| [k, k]}, {prompt: "select"}, class:"form-control" %>
       
-      <%= f.label :password %>
-      <%= f.password_field :password, class:"form-control" %>
-      
-      <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation, class:"form-control" %>
-      
       <%= f.submit "Save changes", class: "btn btn-primary" %>
     <% end %>
     <div class="gravatar_edit">
@@ -44,7 +38,7 @@
     </div>
     <div class="negative_edit">
       <%= link_to "Delete my account.", @user, method: :delete, date: {confirm: "You sure?"} %>
-      <%= link_to "Change my password", "#" %>
+      <%= link_to "Change my password", edit_password_reset_path(@user) %>
     </div>
   </div>
 </div>

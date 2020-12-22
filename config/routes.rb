@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  get 'password_resets/edit'
   root 'static_pages#home'
   get '/about', to: 'static_pages#about'
   get '/contact', to: 'static_pages#contact'
@@ -16,5 +17,6 @@ Rails.application.routes.draw do
     end
   end
   resources :posts, only:[:create, :destroy]
+  resources :password_resets, only:[:edit, :update]
   resources :relationships, only:[:create, :destroy]
 end
