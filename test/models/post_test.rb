@@ -7,9 +7,9 @@ class PostTest < ActiveSupport::TestCase
     @post = @user.posts.build(content: "Lorem ipsum")
   end
   
-  test "post should valid" do
-    assert @post.valid?
-  end
+  #test "post should valid" do
+  #  assert @post.valid?
+  #end
   
   test "user_id should be present" do
     @post.user_id = nil

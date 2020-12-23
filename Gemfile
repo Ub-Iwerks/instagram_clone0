@@ -5,6 +5,12 @@ ruby '2.6.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
+# Active Recordのバリデーション用(デフォルトでバリデーション機能がない為)
+gem 'active_storage_validations', '0.8.2'
+#画像の大きさを変更の処理を可能に
+gem 'image_processing',           '1.9.3'
+#画像の大きさを変更可能に
+gem 'mini_magick',                '4.9.5'
 #直輸入
 gem 'bootstrap-sass', '3.4.1'
 # Use Active Model has_secure_password
