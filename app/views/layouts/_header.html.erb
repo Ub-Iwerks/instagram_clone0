@@ -4,12 +4,12 @@
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "Post", "#" %></li> <!-- 写真アップロード画面へのリンク-->
         <li><%= link_to "Search", "#" %></li> <!-- 検索機能を実装する-->
-        <li><%= link_to "Notification", "#" %></li> <!-- 通知機能を実装する-->
         <li><%#= link_to "Users", users_path %></li>
         <li><%#= link_to "Setting", edit_user_path(current_user) %></li>
         <% if logged_in? %>
+          <li><%= link_to "Notification", "#" %></li> <!-- 通知機能を実装する-->
+          <li><%= link_to "Posting", new_post_path %></li>
           <li><%= link_to "Profile", current_user %></li>
         <% else %>
           <li><%= link_to "Log in", login_path %></li>

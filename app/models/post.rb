@@ -10,7 +10,7 @@ class Post < ApplicationRecord
   
   def image_presence
     unless image.attached?
-      errors.add(:image, 'Please select the image') #このバリデーションはDBレベルでエラーを感知するのだろうか。
+      errors.add(:image, 'select is must') #このバリデーションはDBレベルでエラーを感知するのだろうか。'Please select the image'がいい。
     end
   end
   
