@@ -1,0 +1,5 @@
+<li>
+  <%= gravatar_for comment.user, size: 50 %>
+  <%= link_to comment.user.username, comment.user %>
+  <p><%= comment.content %></p>
+</li>

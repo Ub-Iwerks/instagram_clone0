@@ -7,12 +7,22 @@
         <%= @user.username %>
       </h1>
     </section>
-    <section class="comment">
-      <%= @post.content %>
-    </section>
   </aside>
   <aside class="col-md-8">
-    <%= image_tag @post.display_image if @post.image.attached? %>
+    <section class="post_info">
+      <%= image_tag @post.display_image if @post.image.attached? %>
+      <p><%= @post.content %></p>
+    </section>
+    <section class="comment_info">
+      <% if @comments.any? %>
+        <ul>
+          <%= render @comments %>
+        </ul>
+      <% end %>
+    </section>
+    <section class="comment_form">
+      <%= render "shared/comment_form" %>
+    </section>
   </aside>
 </div>
 
