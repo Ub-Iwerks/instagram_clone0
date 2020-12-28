@@ -18,11 +18,6 @@ class PostsController < ApplicationController
     @post = current_user.posts.build
   end
   
-  def index
-    @q = Post.ransack(params[:q])
-    @posts = @q.result(distinct: true)
-  end
-  
   def show
     @post = Post.find(params[:id])
     @user = @post.user

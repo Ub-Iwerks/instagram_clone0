@@ -2,9 +2,9 @@
   <div class="container">
     <%= link_to "Instagram_clone", root_path, id: "logo" %>
     <nav>
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right header_nav">
+        <li><%= render "shared/search_form" %></li>
         <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "Search", "#" %></li> <!-- 検索機能を実装する-->
         <li><%#= link_to "Users", users_path %></li>
         <li><%#= link_to "Setting", edit_user_path(current_user) %></li>
         <% if logged_in? %>

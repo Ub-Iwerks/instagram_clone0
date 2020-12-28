@@ -1,5 +1,6 @@
-<%= search_form_for @q do |f| %>
-  <%= f.label :content, "Search" %>
-  <%= f.search_field :content_cont %>
-  <%= f.submit "Search" %>
-<% end %>
+<dl class="searchbox">
+  <%= search_form_for @q, url: root_path do |f| %>
+    <dt><%= f.search_field :content_cont, placeholder: "Search" %></dt>
+    <dd><%= f.submit "Search", class: "search_btn" %></dd>
+  <% end %>
+</dl>

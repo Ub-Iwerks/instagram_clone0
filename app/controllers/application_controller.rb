@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
+  before_action :set_search
   
   private
   #beforeフィルター
@@ -10,6 +11,11 @@ class ApplicationController < ActionController::Base
       flash[:danger]="Please log in"
       redirect_to login_url
     end
+  end
+  
+  def set_search
+    @q = Post.ransack(params[:q])
+    @search_posts = @q.result(distinct: true)
   end
   
   #正しいユーザーかどうか確認

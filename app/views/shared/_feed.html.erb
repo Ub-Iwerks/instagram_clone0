@@ -1,4 +1,9 @@
-<% if @feed_items.any? %>
+<% if @search_feed_items.any? %>
+  <ol class="posts">
+  <%= render @search_feed_items %>
+  </ol>
+  <%= will_paginate @search_feed_items, params: { controller: :static_pages, action: :home } %>
+<% elsif @feed_items.any? %>
   <ol class="posts">
     <%= render @feed_items %>
   </ol>
