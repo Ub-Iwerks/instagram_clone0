@@ -20,6 +20,12 @@
         </ul>
       <% end %>
     </section>
+    <section class="like_btn">
+      <%= render "likes/like" %>
+      <a href="<%= liking_post_like_path(@post) %>">
+        Liked by <strong><%= @post.liked_users.count %></strong> users.
+      </a>
+    </section>
     <section class="comment_form">
       <%= render "shared/comment_form" %>
     </section>

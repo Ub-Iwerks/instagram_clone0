@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
   has_one_attached :image
   default_scope -> {order(created_at: :desc)}
   validates :user_id, presence: true
@@ -8,6 +9,11 @@ class Post < ApplicationRecord
   validates :image, content_type: {in: %w[image/jpeg image/png], message: "must be valid image format"},
                     size: {less_than: 5.megabytes, message: "should be less than 5MB"}
   validate :image_presence
+  has_many :liked_users, through: :likes, source: :user
+  
+  #has_many :liked_posts, through: :likes, source: :post
+  #has_many :liked_by_users, through: :likes, source: :user
+  #has_many :following, through: :active_relationships, source: :followed
   
   def image_presence
     unless image.attached?
@@ -19,5 +25,6 @@ class Post < ApplicationRecord
   def display_image
     image.variant(gravity: :center, resize:"500x500^", crop:"500x500+0+0").processed
   end
+  
 
 end

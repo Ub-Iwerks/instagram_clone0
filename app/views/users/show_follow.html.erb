@@ -1,5 +1,6 @@
 <% provide(:title, @title) %>
 <div class="row">
+  
   <aside class="col-md-4">
     <section class="user_info">
       <%= gravatar_for @user %>
@@ -11,6 +12,7 @@
       <%= render "shared/stats" %>
     </section>
   </aside>
+  
   <div class="col-md-8">
     <h3><%= @title %></h3>
     <% if @users.any? %>
@@ -20,4 +22,5 @@
       <%= will_paginate %>
     <% end %>
   </div>
+  
 </div>

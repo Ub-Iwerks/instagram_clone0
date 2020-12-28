@@ -23,6 +23,7 @@ class PostsController < ApplicationController
     @user = @post.user
     @comment = current_user.comments.build
     @comments = @post.comments
+    @like = Like.new
   end
   
   def destroy

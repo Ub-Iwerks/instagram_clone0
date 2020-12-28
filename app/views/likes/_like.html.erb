@@ -1,0 +1,9 @@
+<% if logged_in? %>
+  <% if current_user.liking?(@post) %>
+    <p><%= link_to "Unlike", post_like_path(@post), method: :delete, class: "btn btn-primary" %></p>
+  <% else %>
+    <p><%= link_to "Like", post_likes_path(@post), method: :post, class: "btn btn-primary" %></p>
+  <% end %>
+<% else %>
+  数だけ表示
+<% end %>

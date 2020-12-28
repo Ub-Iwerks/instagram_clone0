@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
   has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
@@ -20,6 +21,7 @@ class User < ApplicationRecord
     male: 1,
     unanswered: 2
   }
+  has_many :liked_posts, through: :likes, source: :post
   
   #渡された文字列のハッシュ値を返す
   def User.digest(string)
@@ -44,6 +46,19 @@ class User < ApplicationRecord
   #フォロー確認する
   def following?(other_user)
     following.include?(other_user)
+  end
+  
+  #いいねする
+  def liked(post)
+    liked_posts << post
+  end
+  #いいねする
+  def unliked(post)
+    Like.find_by(post_id: post.id).destroy
+  end
+  #いいね済みかどうか確認する
+  def liking?(post)
+    self.liked_posts.include?(post)
   end
   
 end
