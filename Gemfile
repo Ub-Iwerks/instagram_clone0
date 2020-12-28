@@ -5,6 +5,8 @@ ruby '2.6.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
+#検索用の有名gem
+gem "ransack"
 # Active Recordのバリデーション用(デフォルトでバリデーション機能がない為)
 gem 'active_storage_validations', '0.8.2'
 #画像の大きさを変更の処理を可能に
