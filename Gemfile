@@ -33,6 +33,8 @@ gem "faker", "2.1.2"
 # gem 'redis', '~> 4.0'
 gem "will_paginate", "3.1.8"
 gem "bootstrap-will_paginate", "1.0.0"
+#デバッグ情報管理
+gem 'pry-rails'
 
 
 # Use Active Storage variant

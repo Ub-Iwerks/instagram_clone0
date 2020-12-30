@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  get 'notifications/index'
   get 'password_resets/edit'
   root 'static_pages#home'
   get '/about', to: 'static_pages#about'
@@ -26,4 +27,5 @@ Rails.application.routes.draw do
   end
   resources :password_resets, only:[:edit, :update]
   resources :relationships, only:[:create, :destroy]
+  resources :notifications, only:[:index]
 end

@@ -22,6 +22,8 @@ class User < ApplicationRecord
     unanswered: 2
   }
   has_many :liked_posts, through: :likes, source: :post
+  has_many :active_notifications,  class_name: "Notification", foreign_key: "visitor_id", dependent: :destroy
+  has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
   
   #渡された文字列のハッシュ値を返す
   def User.digest(string)
@@ -59,6 +61,20 @@ class User < ApplicationRecord
   #いいね済みかどうか確認する
   def liking?(post)
     self.liked_posts.include?(post)
+  end
+  
+  #フォローされた際に、通知インスタンスを作成するメソッド
+  def create_notification_follow(current_user)
+    #既にフォローされているか、検索/代入
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ?", current_user.id, id, "follow"])
+    #既にフォローされていない場合のみ以下を実行
+    if temp.blank?
+      notification = current_user.active_notifications.new(
+        visited_id: id,
+        action: "follow"
+        )
+      notification.save if notification.valid?
+    end
   end
   
 end

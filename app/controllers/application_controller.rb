@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
-  before_action :set_search
+  before_action :set_search, :set_global_search_variable
   
   private
   #beforeフィルター
@@ -13,9 +13,18 @@ class ApplicationController < ActionController::Base
     end
   end
   
-  def set_search
+  #formから受け取った変数を定義していないとエラーが生じるため
+  def set_global_search_variable
     @q = Post.ransack(params[:q])
-    @search_posts = @q.result(distinct: true)
+  end
+  
+  #formから受け取った値が存在する場合のみ、@search_postsを返す。
+  def set_search
+    temp = params[:q]
+    if !temp.nil?
+      @q = Post.ransack(temp)
+      @search_posts = @q.result(distinct: true)
+    end
   end
   
   #正しいユーザーかどうか確認

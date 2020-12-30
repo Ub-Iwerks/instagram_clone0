@@ -1,0 +1,26 @@
+<% visitor = User.find(notification.visitor_id) %>
+<% visited = User.find(notification.visited_id) %>
+
+<li>
+  <p>
+  <%= gravatar_for visitor, size: 25 %>
+  <%= link_to visitor.username, visitor %>さんが
+  
+  <% case notification.action %>
+    <% when "follow" then %>
+      あなたをフォローしました
+    <% when "like" then %>
+      <%= link_to "あなたの投稿", notification.post %>にいいねしました
+    <% when "comment" then %>
+      <% if notification.post.user_id == visited.id %>
+        <%= link_to "あなたの投稿", notification.post %>
+      <% else %>
+        <%= gravatar_for notification.post.user, size: 25 %>
+        <%= link_to "#{notification.post.user.name}さんの投稿", post_path(notification.post) %>
+      <% end %>
+      にコメントしました
+      <p><%= Comment.find(notification.comment_id).content %></p>
+  <% end %>
+  </p>
+  <p><%= time_ago_in_words(notification.created_at).downcase %> ago.</p>
+</li>

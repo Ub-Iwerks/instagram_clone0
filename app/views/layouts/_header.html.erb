@@ -3,12 +3,14 @@
     <%= link_to "Instagram_clone", root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right header_nav">
-        <li><%= render "shared/search_form" %></li>
+        <% if logged_in? %>
+          <li><%= render "shared/search_form" %></li>
+        <% end %>
         <li><%= link_to "Home", root_path %></li>
         <li><%#= link_to "Users", users_path %></li>
         <li><%#= link_to "Setting", edit_user_path(current_user) %></li>
         <% if logged_in? %>
-          <li><%= link_to "Notification", "#" %></li> <!-- 通知機能を実装する-->
+          <li><%= render "shared/bell" %></li> <!-- 通知機能を実装する-->
           <li><%= link_to "Posting", new_post_path %></li>
           <li><%= link_to "Profile", current_user %></li>
         <% else %>
