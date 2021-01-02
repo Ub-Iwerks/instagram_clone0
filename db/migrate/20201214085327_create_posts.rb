@@ -6,6 +6,6 @@ class CreatePosts < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
-    add_index :posts, [:user_id, :create_at]
+    add_index :posts, [:user_id, :created_at] #ここ！！綴りミス。ただもう全部pushしてる。これを直して。developでpushするしかないかなー
   end
 end
