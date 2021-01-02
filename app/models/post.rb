@@ -8,14 +8,16 @@ class Post < ApplicationRecord
   validates :content, length: {maximum: 140}
   validates :image, content_type: {in: %w[image/jpeg image/png], message: "must be valid image format"},
                     size: {less_than: 5.megabytes, message: "should be less than 5MB"}
-  validate :image_presence
+  #validate :image_presence
   has_many :liked_users, through: :likes, source: :user
   has_many :notifications, class_name: "Notification", foreign_key: "post_id", dependent: :destroy
 
   
+  #このバリデーションはDBレベルでエラーを感知できない。→seedファイルを実行する際にエラーが生じてしまう(DBに画像ファイルを登録できてない為)。
+  #エラーメッセージの設定 'Please select the image'がいい。
   def image_presence
     unless image.attached?
-      errors.add(:image, 'select is must') #このバリデーションはDBレベルでエラーを感知するのだろうか。'Please select the image'がいい。
+      errors.add(:image, 'select is must')
     end
   end
   
