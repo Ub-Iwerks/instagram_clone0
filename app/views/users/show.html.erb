@@ -22,8 +22,38 @@
     <%= render "shared/follow_form" if logged_in? %>
     <% if @user.posts.any? %>
       <h3>Posts (<%= @user.posts.count %>)</h3>
-      <ol class="posts">
-        <%= render @posts %>
+      <ol class="posts modal_imgs">
+        <% @posts.each do |post| %>
+          <% if post.image.attached? %>
+            <li class="modal_img">
+            <!-- Button trigger modal -->
+              <button type="button" class="modal_btn" data-toggle="modal" data-target="#modal-<%= post.id %>">
+                <%= image_tag post.display_image %>
+              </button>
+              <!-- Modal -->
+              <div class="modal fade" id="modal-<%= post.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <span class="modal-title" id="exampleModalLabel">Posted <%= time_ago_in_words(post.created_at) %> ago.</span>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <p><%= image_tag post.display_image %></p>
+                      <p><%= post.content %></p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          <% end %>
+          
+        <% end %>
       </ol>
       <%= will_paginate @posts %>
     <% end %>
