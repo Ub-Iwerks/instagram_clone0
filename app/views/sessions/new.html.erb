@@ -1,4 +1,4 @@
-<%= provide(:title, "Log in")%>
+<% set_meta_tags title: "Login", description:"Welcome back to Instagram_clone. Sign in to check out what your friends, family & interests have been capturing & sharing around the world." %>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_with(url: login_path, scope: :session,local: true) do |f| %>

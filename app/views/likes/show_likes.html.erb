@@ -1,8 +1,8 @@
-<% provide(:title, @title) %>
+<% set_meta_tags title: @post.user.username, site: 'post' %>
 <div class="row">
   <aside class="col-md-4">
     <section class="post_info">
-      <%= image_tag display_image(@post) if @post.image.attached? %>
+      <%= image_tag display_image(@post, resize:"360x360^", crop:"360x360+0+0") if @post.image.attached? %>
       <p><%= @post.content %></p>
     </section>
   </aside>

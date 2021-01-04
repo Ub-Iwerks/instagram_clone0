@@ -5,7 +5,9 @@ ruby '2.6.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
-#AWS S3にファイル保存を可能にするのだ
+#SEOフレンドリー
+gem 'meta-tags'
+#AWS S3にファイル保存を可能にする
 gem "aws-sdk-s3", require: false
 #検索用の有名gem
 gem "ransack"

@@ -1,14 +1,17 @@
 module ApplicationHelper
   require "uri"
   
-  #ページ毎に完全なタイトルを返す。
-  def full_title(page_title = "")
-    base_title = "Instagram_clone"
-    if page_title.empty?
-      base_title
-    else
-      page_title + " | " + base_title
-    end
+  #デフォルトのviewデータ
+  def default_meta_tags
+  {
+    site: 'Instagram_clone',
+    reverse: true,
+    charset: 'utf-8',
+    description: 'Create an account or log in to Instagram_clone - A simple, fun & creative way to capture, edit & share photos, videos & messages with friends & family.',
+    keywords: 'Instagram,clone,Ruby,Rails',
+    canonical: request.original_url,
+    separator: '•'
+}
   end
   
   #渡された引数をハイパーリンク化する
