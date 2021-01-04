@@ -22,9 +22,9 @@ class Post < ApplicationRecord
   end
   
   # 表示用のリサイズ済み画像を返す
-  def display_image
-    image.variant(gravity: :center, resize:"500x500^", crop:"500x500+0+0").processed
-  end
+  #def display_image
+    #image.variant(gravity: :center, resize:"500x500^", crop:"500x500+0+0").processed
+  #end
   
   
   #いいねされた際に、通知インスタンスを作成するメソッド

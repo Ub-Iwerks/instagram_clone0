@@ -334,20 +334,44 @@ span.image {
 }
 
 /* ===================== */
-/* modal */
-/*
-.modal_btn {
-  text-decoration: none;
-}
-
+/* user/show with modal */
 .modal_imgs {
   display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: flex-start;
+  .modal_img{
+    position: relative;
+    width: 31%;
+    height: auto;
+    margin: 1%;
+    overflow: hidden;
+    &:before{
+      content: "";
+      display: block;
+      padding-top: 100%;
+    }
+    .modal_btn{
+      position: absolute;
+      display: block;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      span{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        width: auto;
+        height: 100%;
+      }
+    }
+  }
 }
-.modal_img {
-  width: 33%;
-  
-}
-*/
 
 /* ===================== */
 /* miscellaneous */

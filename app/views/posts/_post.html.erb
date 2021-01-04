@@ -2,7 +2,7 @@
   <%= link_to gravatar_for(post.user, size: 50), post.user %>
   <span class="user"><%= link_to post.user.username, post.user %></span>
   <span class="content">
-    <a href="/posts/<%= post.id %>"><%= image_tag post.display_image if post.image.attached? %></a>
+    <a href="/posts/<%= post.id %>"><%= image_tag display_image(post) if post.image.attached? %></a>
     <%= post.content %>
   </span>
   <span class="timestamp">
