@@ -43,7 +43,6 @@ yarn-debug.log*
 #gitの管理下に置かないファイルを指定
 /app/channels/
 /app/jobs/
-/app/mailers/
 
 /bin/
 /lib/
@@ -51,6 +50,6 @@ yarn-debug.log*
 /public/
 /storage/
 /tmp/
-/vender/
+/vendor/
 
 
